@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <canvas id='gameCanvas' width='800' height="600"></canvas>
+    <title>Tennis Game</title>
+</head>
+
+<body>
+    <script>
+        let canvas;
+        let canvasContext;
+        let ballX = 50;
+
+        window.onload = function () {
+            console.log('Hello World!');
+            canvas = document.getElementById('gameCanvas');
+            canvasContext = canvas.getContext('2d');
+            let framesPerSecond = 30;
+
+            setInterval(drawEverything, 1000 / framesPerSecond);
+
+            drawEverything();
+            drawEverything();
+            drawEverything();
+        }
+
+        function drawEverything() {
+            ballX = ballX + 5;
+            canvasContext.fillStyle = 'black';
+            canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+            canvasContext.fillStyle = 'white';
+            canvasContext.fillRect(0, 210, 10, 100);
+            canvasContext.fillStyle = 'blue';
+            canvasContext.fillRect(ballX, 100, 10, 10);
+        }
+    </script>
+</body>
+
+</html>
