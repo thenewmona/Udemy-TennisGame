@@ -40,18 +40,18 @@
         }
 
         function drawEverything() {
-            //this is the background
+            //this is the background screen 
             colorRect(0, 0, canvas.width, canvas.height, 'black');
-            //this is the paddle           
-           colorRect(0, 210, 10, 100, 'white');
+            //this is the left paddle           
+            colorRect(0, 210, 10, 100, 'white');
             //this is the ball            
             colorRect(ballX, 100, 10, 10, 'blue');
         }
-
         function colorRect(leftX, topY, width, height, drawColor) {
             canvasContext.fillStyle = drawColor;
             canvasContext.fillRect(leftX, topY, width, height, );
         }
+
     </script>
 </body>
 
