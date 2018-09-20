@@ -45,8 +45,12 @@
             //this is the left paddle           
             colorRect(0, 210, 10, 100, 'white');
             //this is the ball            
-            colorRect(ballX, 100, 10, 10, 'blue');
+            canvasContext.fillStyle = 'blue';
+            canvasContext.beginPath();
+            canvasContext.arc(ballX, 100, 10, 0, Math.PI*2, true);
+            canvasContext.fill();
         }
+        
         function colorRect(leftX, topY, width, height, drawColor) {
             canvasContext.fillStyle = drawColor;
             canvasContext.fillRect(leftX, topY, width, height, );
