@@ -33,19 +33,27 @@ window.onload = function () {
     }, 1000 / framesPerSecond);
     canvas.addEventListener('mousemove', function (evt) {
         let mousePos = calculateMousePos(evt);
-        paddle1Y = mousePos.y;
+        paddle1Y = mousePos.y -(PADDLE_HEIGHT/2);
     });
 }
-
+//reset the ball if it misses the paddle
+function ballReset() {
+    ballX = canvas.width/2;
+    ballY = canvas.height/2;
+    ballSpeedX = -ballSpeedX;
+}
 //setting the speed and the direction of the ball 
 function moveEverything() {
     ballX = ballX + ballSpeedX;
     ballY = ballY + ballSpeedY;
-
-    //ball bounces vertical 
+    //ball bounces vertical and hits the paddle
     if (ballX < 0) {
-        ballSpeedX = -ballSpeedX;
+        if(ballY > paddle1Y && ballY < paddle1Y+PADDLE_HEIGHT){
+            ballSpeedX = ballSpeedX;
+        }else{                        
+        ballReset();
     }
+    };
     if (ballX > canvas.width) {
         ballSpeedX = -ballSpeedX;
     }
