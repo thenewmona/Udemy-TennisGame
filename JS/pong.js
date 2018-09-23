@@ -5,8 +5,9 @@ let ballY = 50;
 let ballSpeedX = 10;
 let ballSpeedY = 5;
 let paddle1Y = 250;
-// let paddle2Y = 250;
+let paddle2Y = 250;
 const PADDLE_HEIGHT = 100;
+const PADDLE_THICKNESS = 10;
 
 //mouse action for the paddle
 function calculateMousePos(evt) {
@@ -47,12 +48,14 @@ function moveEverything() {
     ballX = ballX + ballSpeedX;
     ballY = ballY + ballSpeedY;
     //ball bounces vertical and hits the paddle
+    //setting the right
     if (ballX < 0) {
         if(ballY > paddle1Y && ballY < paddle1Y+PADDLE_HEIGHT){
             ballSpeedX = ballSpeedX;
         }else{                        
         ballReset();
     }
+
     };
     if (ballX > canvas.width) {
         ballSpeedX = -ballSpeedX;
@@ -71,7 +74,9 @@ function drawEverything() {
     //this is the background screen 
     colorRect(0, 0, canvas.width, canvas.height, 'black');
     //this is the left paddle           
-    colorRect(0, paddle1Y, 10, 100, 'white');
+    colorRect(0, paddle1Y, PADDLE_THICKNESS, 100, 'white');
+    //this is the right paddle
+    colorRect(canvas.width -PADDLE_THICKNESS, paddle2Y, PADDLE_THICKNESS, PADDLE_HEIGHT, 'white');
     //this is the ball          
     colorCircle(ballX, ballY, 10, 'blue');
 }
