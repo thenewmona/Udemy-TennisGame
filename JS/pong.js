@@ -68,6 +68,9 @@ function moveEverything() {
     if (ballX < 0) {
         if (ballY > paddle1Y && ballY < paddle1Y + PADDLE_HEIGHT) {
             ballSpeedX = ballSpeedX;
+            let deltaY = ballY
+            -(paddle1Y+PADDLE_HEIGHT/2);
+            ballSpeedY = deltaY * 0.35;
         } else {
             ballReset();
             //player Score 
@@ -76,7 +79,10 @@ function moveEverything() {
     };
     if (ballX > canvas.width) {
         if (ballY > paddle2Y && ballY < paddle2Y + PADDLE_HEIGHT) {
-            ballSpeedX = -ballSpeedX;        
+            ballSpeedX = -ballSpeedX;  
+            let deltaY = ballY
+            -(paddle2Y+PADDLE_HEIGHT/2);
+            ballSpeedY = deltaY * 0.35;      
     } else {
         ballReset();
         player1Score ++;
@@ -100,7 +106,7 @@ function drawEverything() {
     //this is the right paddle
     colorRect(canvas.width - PADDLE_THICKNESS, paddle2Y, PADDLE_THICKNESS, PADDLE_HEIGHT, 'white');
     //this is the ball          
-    colorCircle(ballX, ballY, 10, 'blue');
+    colorCircle(ballX, ballY, 10, 'yellow');
 
     canvasContext.fillText(player1Score, 100, 100);
     canvasContext.fillText(player2Score, canvas.width -100, 100);
